@@ -12,11 +12,11 @@ const BookDetails = () => {
   return (
     <div className="mt-10 w-[80%] mx-auto bg-white rounded-lg flex flex-col md:flex-row gap-8">
       {/* Book Image */}
-      <div className="w-full md:w-[50%] p-6 bg-base-200 flex justify-center">
+      <div className="w-full md:w-[50%] p-10 bg-base-200 flex justify-center items-center">
         <img
           src={book.image}
           alt="Book Cover"
-          className="rounded-lg h-[500px]"
+          className="rounded-lg h-[500px] rotate-x-20 rotate-y-40"
         />
       </div>
 
