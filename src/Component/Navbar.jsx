@@ -5,10 +5,18 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink to="/" className={({ isActive }) =>
+          isActive
+            ? "px-4 py-2 border-2 border-green-500 rounded-lg"
+            : "px-4 py-2"
+        }>Home</NavLink>
       </li>
       <li>
-        <a>Listed Books</a>
+        <NavLink to='/booklist' className={({ isActive }) =>
+          isActive
+            ? "px-4 py-2 border-2 border-green-500 rounded-lg"
+            : "px-4 py-2"
+        }>Listed Books</NavLink>
       </li>
       <li>
         <a>Pages to read</a>

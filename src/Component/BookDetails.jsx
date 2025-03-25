@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 
 const BookDetails = () => {
@@ -7,7 +7,19 @@ const BookDetails = () => {
   const data = useLoaderData();
 
   const book = data.find((book) => book.bookId === id);
-  console.log(book);
+
+
+     const [readList,setReadList]=useState([])
+      const [wishList,setwishList]=useState([])
+  
+      const addToReadList =(book)=>{
+        console.log(book)
+          setReadList([...readList,book])
+      }
+      const addToWishList  =(book)=>{
+        console.log(book)
+          setwishList([...wishList,book])
+      }
 
   return (
     <div className="mt-10 w-[80%] mx-auto bg-white rounded-lg flex flex-col md:flex-row gap-8">
@@ -51,11 +63,11 @@ const BookDetails = () => {
           </p>
         </div>
 
-        <div className="flex gap-4 mt-4">
-          <button className="px-5 py-2 bg-gray-900 text-white rounded-lg">
+        <div className="flex gap-4 mt-4 ">
+          <button onClick={()=>addToReadList(book)} className="px-5 cursor-pointer py-2 outline outline-gray-400 text-black rounded-lg">
             Read
           </button>
-          <button className="px-5 py-2 bg-green-500 text-white rounded-lg">
+          <button onClick={()=>addToWishList(book)} className="px-5 cursor-pointer py-2 bg-green-500 text-white rounded-lg">
             Wishlist
           </button>
         </div>
