@@ -51,7 +51,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex gap-4">
           <a className="btn bg-cyan-400 text-white">Sign In</a>
-          <a className="btn bg-green-600 text-white">Sign Up</a>
+          <a className="btn bg-green-500 text-white">Sign Up</a>
         </div>
       </div>
     </div>
