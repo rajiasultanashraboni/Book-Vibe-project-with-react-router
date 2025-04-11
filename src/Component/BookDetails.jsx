@@ -1,26 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import { useLoaderData, useParams } from "react-router-dom";
+import { addToStoredReadLists, addToStoredWishLists } from "../utility/AddToDb";
+
 
 const BookDetails = () => {
   const { bookId } = useParams();
   const id = parseInt(bookId);
   const data = useLoaderData();
 
+  
+
   const book = data.find((book) => book.bookId === id);
 
+  const handleAddToReadLists = (id)=>{
 
-     const [readList,setReadList]=useState([])
-      const [wishList,setwishList]=useState([])
+    addToStoredReadLists(id)
+
+  }
+  const handleAddToWishLists = (id)=>{
+
+   addToStoredWishLists(id)
+
+  }
+
+  // console.log(book)
+
+
+    //  const [readLists,setReadList]=useState([])
+    //   const [wishLists,setwishList]=useState([])
   
-      const addToReadList =(book)=>{
-        console.log(book)
-          setReadList([...readList,book])
-      }
-      const addToWishList  =(book)=>{
-        console.log(book)
-          setwishList([...wishList,book])
-      }
-
+    //   const addToReadList =(book)=>{
+    //     console.log(book)
+    //       setReadList([...readLists,book])
+    //   }
+    //   const addToWishList  =(book)=>{
+    //     console.log(book)
+    //       setwishList([...wishLists,book])
+    //   }
+  
   return (
     <div className="mt-10 w-[80%] mx-auto bg-white rounded-lg flex flex-col md:flex-row gap-8">
       {/* Book Image */}
@@ -64,15 +81,16 @@ const BookDetails = () => {
         </div>
 
         <div className="flex gap-4 mt-4 ">
-          <button onClick={()=>addToReadList(book)} className="px-5 cursor-pointer py-2 outline outline-gray-400 text-black rounded-lg">
+          <button onClick={()=>handleAddToReadLists(bookId)} className="px-5 cursor-pointer py-2 outline outline-gray-400 text-black rounded-lg">
             Read
           </button>
-          <button onClick={()=>addToWishList(book)} className="px-5 cursor-pointer py-2 bg-green-500 text-white rounded-lg">
+          <button onClick={()=>handleAddToWishLists(bookId)} className="px-5 cursor-pointer py-2 bg-green-500 text-white rounded-lg">
             Wishlist
           </button>
         </div>
       </div>
     </div>
+    
   );
 };
 
